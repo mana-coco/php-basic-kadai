@@ -9,30 +9,31 @@
 <body>
     <p>
     <?php
-      //ソートする配列を宣言
-      $nums = [15,4,18,23,10];
-
-      //ソートの順序を指定
-      $order = true; 
-
-      if($order === true){
-        echo '昇順にソートします。'.'<br>';
-        sort($nums);
-        foreach($nums as $num){
-            echo $num.'<br>';
-        }
+     //昇順・降順を選択して配列をソートする関数
+     function sort_2way($array, $order){
+      //TRUEなら昇順、でなければ降順にソート
+      if($order){
+        echo '昇順にソートします。<br>';
+        sort($array);
+      }else{
+        echo '降順にソートします。<br>';
+        rsort($array);
       }
 
-      $order = false;
-
-      if ($order === false) {
-        echo '<br>降順にソートします。'.'<br>';
-        $desc_nums = $nums; //元の配列をコピー
-        rsort($desc_nums);
-        foreach ($desc_nums as $num) {
-            echo $num.'<br>';
-        }
+      //ソート結果を1行ずつ表示
+      foreach($array as $element){
+        echo $element . '<br>';
       }
+     }
+
+     //ソートする配列を宣言
+     $nums = [15, 4, 18, 23, 10];
+
+     //昇順にソート
+     sort_2way($nums, TRUE);
+
+     //降順にソート
+     sort_2way($nums, FALSE);
     ?>
     </p>
 </body>
